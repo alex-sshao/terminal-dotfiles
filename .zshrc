@@ -109,9 +109,9 @@ source $ZSH/oh-my-zsh.sh
 . /usr/share/powerline/bindings/zsh/powerline.zsh
 
 # Syntax Highlight
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # kitty ssh fix
-alias ssh="kitten ssh"
+#alias ssh="kitten ssh"
 
 
