@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/clown/computer_graphics/final'
+let g:netrw_dirhist_9='/home/clown/computer_graphics'
+let g:netrw_dirhist_8='/home/clown/computer_graphics/final'
+let g:netrw_dirhist_7='/home/clown/computer_graphics'
+let g:netrw_dirhist_6='/home/shao/.oh-my-zsh/plugins'
+let g:netrw_dirhist_5='/home/shao'
+let g:netrw_dirhist_4='/home/shao/.steam'
+let g:netrw_dirhist_3='/home/shao'
+let g:netrw_dirhist_2='/home/shao/.vim/plugged'
+let g:netrw_dirhist_1='/home/shao/.vim'
