@@ -11,6 +11,7 @@ Plug 'enricobacis/vim-airline-clock'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 call plug#end()
 
 " search
@@ -52,6 +53,8 @@ let g:ale_lint_on_enter = 0
 
 
 " fzf
+command! -bang -nargs=* PRg
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
 nnoremap <C-n> :Files<CR>
 nnoremap <C-f> :Rg<CR>
 
@@ -67,6 +70,9 @@ nnoremap <C-w><C-w> :w<CR>
 nnoremap <C-w>Q :q!<CR>
 nnoremap <C-w>q :<CR>
 nnoremap <C-w><C-Q> :q!<CR>
+
+nnoremap <C-w>e :E<CR>
+nnoremap <C-w><C-e> :E<CR>
 
 tnoremap <C-w>Q <C-w>:q!<CR>
 tnoremap <C-w><C-Q> <C-w>N:q!<CR>
@@ -120,6 +126,7 @@ set relativenumber
 set autoindent
 set smartindent
 set shell=/bin/zsh
+set scrolloff=3
 
 set updatetime=100
 set tabstop=2
