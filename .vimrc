@@ -163,7 +163,6 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 
 command! S execute 'cd ' . resolve('/proc/'.job_info(term_getjob(bufnr('%')))['process'].'/cwd')
 
-
 "set cursorline
 set cursorlineopt=number
 set nu
