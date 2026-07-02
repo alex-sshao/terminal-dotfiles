@@ -121,3 +121,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # kitty ssh fix
 alias ssh="kitten ssh"
 
+
+clear
+fastfetch

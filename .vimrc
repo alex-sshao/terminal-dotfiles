@@ -1,11 +1,19 @@
+filetype plugin indent on 
+
+set ttyfast
+set ttimeout
+set ttimeoutlen=100
+
 call plug#begin()
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'powerline/powerline-fonts'
+
 Plug 'vim-airline/vim-airline-themes'
 Plug 'enricobacis/vim-airline-clock'
 Plug 'airblade/vim-gitgutter'
@@ -67,15 +75,15 @@ nnoremap <C-w>s :split<CR>
 nnoremap <C-w>c :close<CR>
 nnoremap <C-w>x :x<CR>
 nnoremap <C-w><C-w> :w<CR>
+
 nnoremap <C-w>Q :q!<CR>
-nnoremap <C-w>q :<CR>
-nnoremap <C-w><C-Q> :q!<CR>
+nnoremap <C-w>q :q!<CR>
 
 nnoremap <C-w>e :E<CR>
 nnoremap <C-w><C-e> :E<CR>
 
-tnoremap <C-w>Q <C-w>:q!<CR>
-tnoremap <C-w><C-Q> <C-w>N:q!<CR>
+tnoremap <C-w>q <C-w>:q!<CR>
+tnoremap <C-w><C-q> <C-w>N:q!<CR>
 tnoremap <C-w><C-n> <C-w>N<CR>
 tnoremap <C-w><C-N> <C-w>N<CR>
 
@@ -85,6 +93,15 @@ nnoremap <C-a><C-h> :tabprevious<CR>
 nnoremap <C-a><C-l> :tabnext<CR>
 nnoremap <C-a>n :tabnew<CR>
 nnoremap <C-a>x :x<CR>
+nnoremap <a-1> 1gt
+nnoremap <a-2> 2gt
+nnoremap <a-3> 3gt
+nnoremap <a-4> 4gt
+nnoremap <a-5> 5gt
+nnoremap <a-6> 6gt
+nnoremap <a-7> 7gt
+
+nnoremap <C-X> <C-a><C-a>
 
 tnoremap <C-a>h <C-w>:tabprevious<CR>
 tnoremap <C-a>l <C-w>:tabnext<CR>
@@ -99,8 +116,8 @@ nnoremap <c-z> <nop>
 vnoremap <c-z> <nop>
 inoremap <c-z> <nop>
 
-" Anti-Find perma highlight
-nnoremap <CR> :noh<CR><CR>
+" No search highlight 
+set nohlsearch
 
 " Visuals
 let g:gitgutter_set_sign_backgrounds = 0
@@ -137,8 +154,15 @@ set formatoptions=l
 set lbr
 set nomodeline
 
+vnoremap < <gv
+vnoremap > >gv
+nnoremap Q @@
+
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
+
+command! S execute 'cd ' . resolve('/proc/'.job_info(term_getjob(bufnr('%')))['process'].'/cwd')
+
 
 "set cursorline
 set cursorlineopt=number
