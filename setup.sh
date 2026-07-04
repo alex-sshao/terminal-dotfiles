@@ -17,6 +17,13 @@ cp -r .vim ~
 link .vimrc ~/.vimrc
 link .zshrc ~/.zshrc
 
+git clone https://gitlab.com/imnotpua/comfyline_prompt.git
+cd comfyline_prompt
+./install.sh
+cd ..
+rm -rf comfyline_prompt
+
+
 git clone https://github.com/powerline/fonts.git --depth=1
 ./fonts/install.sh
 rm -rf ./fonts

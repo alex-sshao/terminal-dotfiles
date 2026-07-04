@@ -8,13 +8,32 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell" # default
-#ZSH_THEME='agnoster'
+ZSH_THEME="comfyline"
 prompt_context(){
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
   fi
 }
+RETVAL_b="#8caaee" # Blue   # background
+RETVAL_f="#303446"    # foreground
+HOST_b="#85c1dc" # Sapphire
+HOST_f="#303446" 
+USER_b="#99d1db" # Sky
+USER_f="#303446"
+GIT_b="#81c8be" # teal
+GIT_f="#303446"
+GIT_CLEAN_b="#b3f58c" 
+GIT_CLEAN_f="#303446"
+DIR_b="#8caaee"
+DIR_f="#303446"
+VENV_b="#a8ddf9"
+VENV_f="#303446"
+BAT_b="#8a8bd8"
+BAT_f="#303446"
+DATE_b="#b3b5fb"
+DATE_f="#303446"
+TIME_b="#f8bbe5"
+TIME_f="#303446"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
