@@ -20,6 +20,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+
+Plug 'catppuccin/vim', { 'as': 'catppuccin', 'branch': 'main' }
 call plug#end()
 
 " search
@@ -117,14 +119,15 @@ vnoremap <c-z> <nop>
 inoremap <c-z> <nop>
 
 " No search highlight 
-set nohlsearch
+" set nohlsearch
 
 " Visuals
 let g:gitgutter_set_sign_backgrounds = 0
 set background=dark
 syntax on
 set termguicolors
-colorscheme CP
+"colorscheme CP
+colorscheme catppuccin_frappe
 let g:airline#extensions#tabline#enabled = 1
 
 " if powerline doesn't work

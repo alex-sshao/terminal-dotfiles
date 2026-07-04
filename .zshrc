@@ -8,8 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell" # default
-ZSH_THEME='agnoster'
+ZSH_THEME="robbyrussell" # default
+#ZSH_THEME='agnoster'
 prompt_context(){
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
@@ -111,8 +111,8 @@ source $ZSH/oh-my-zsh.sh
 #
 
 #POWERLINE CONFIG
- powerline-daemon -q
-. /usr/share/powerline/bindings/zsh/powerline.zsh
+#powerline-daemon -q
+#. /usr/share/powerline/bindings/zsh/powerline.zsh
 
 
 # Syntax Highlight
