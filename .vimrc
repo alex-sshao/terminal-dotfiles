@@ -80,14 +80,12 @@ nnoremap <C-w><C-w> :w<CR>
 
 nnoremap <C-w>Q :q!<CR>
 nnoremap <C-w>q :q!<CR>
+nnoremap <C-w><C-q> <Nop>
+nnoremap <C-w><C-Q> <Nop>
 
 nnoremap <C-w>e :E<CR>
 nnoremap <C-w><C-e> :E<CR>
 
-tnoremap <C-w>q <C-w>:q!<CR>
-tnoremap <C-w><C-q> <C-w>N:q!<CR>
-tnoremap <C-w><C-n> <C-w>N<CR>
-tnoremap <C-w><C-N> <C-w>N<CR>
 
 nnoremap <C-a>h :tabprevious<CR>
 nnoremap <C-a>l :tabnext<CR>
@@ -104,6 +102,14 @@ nnoremap <a-6> 6gt
 nnoremap <a-7> 7gt
 
 nnoremap <C-X> <C-a><C-a>
+nnoremap <A-w> <A-BS>
+
+" terminal management
+tnoremap <C-w>q <C-w>:q!<CR>
+tnoremap <C-w><C-n> <C-w>N<CR>
+tnoremap <C-w><C-N> <C-w>N<CR>
+tnoremap <A-w> <A-BS>
+tnoremap <C-w>x <C-d>
 
 tnoremap <C-a>h <C-w>:tabprevious<CR>
 tnoremap <C-a>l <C-w>:tabnext<CR>
