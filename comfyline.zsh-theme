@@ -154,9 +154,9 @@ function create_segment(){
 # segment functions
 function retval(){
     if [[ $COMFYLINE_RETVAL_NUMBER -eq 2 ]]; then
-        symbol="%(?..✘ %?)"
+        symbol="%(?..✘ %?)  "
     elif [[ $COMFYLINE_RETVAL_NUMBER -eq 1 ]]; then
-        symbol="%?"
+        symbol="%?  "
     else
         symbol="%(?..✘)"
     fi
@@ -353,14 +353,18 @@ done
 LEFTMOST_RANK=100
 declare -A sorted_left
 for ((i=1;i<=${#left_prompt[@]};i++)); do
-	if [[ $left_ranks[$i] -lt $LEFTMOST_RANK ]]; then LEFTMOST_RANK=$left_ranks[$i] fi
+	if [[ $left_ranks[$i] -lt $LEFTMOST_RANK ]]; then 
+		LEFTMOST_RANK=$left_ranks[$i]
+	fi
 	sorted_left[$left_ranks[$i]]="$left_prompt[$i]"
 done
 
 RIGHTMOST_RANK=100
 declare -A sorted_right
 for ((i=1;i<=${#right_prompt[@]};i++)); do
-	if [[ $right_ranks[$i] -lt $RIGHTMOST_RANK ]]; then RIGHTMOST_RANK=$right_ranks[$i] fi
+	if [[ $right_ranks[$i] -lt $RIGHTMOST_RANK ]]; then 
+		RIGHTMOST_RANK=$right_ranks[$i]
+	fi
 	sorted_right[$right_ranks[$i]]="$right_prompt[$i]"
 done
 ((RIGHTMOST_RANK*=-1))
@@ -380,7 +384,7 @@ make_right_prompt(){
 }
 
 export PROMPT='%{%f%b%k%}$(make_left_prompt)$(endleft) '
-export RPROMPT='      %{%f%b%k%}$(make_right_prompt)'    # spaces left so that hiding is triggered
+export RPROMPT='   %{%f%b%k%}$(make_right_prompt)'    # spaces left so that hiding is triggered
 
 if [[ $COMFYLINE_NEXT_LINE_CHAR == "" ]]; then
 	COMFYLINE_NEXT_LINE_CHAR='➟'
@@ -401,6 +405,7 @@ if [[ COMFYLINE_START_NEXT_LINE -eq 1 ]]; then
 
 
 elif [[ COMFYLINE_NO_GAP_LINE -eq 1 ]]; then
+    PROMPT=''$PROMPT
 else
 
 	PROMPT='

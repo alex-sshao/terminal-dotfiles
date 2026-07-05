@@ -16,7 +16,7 @@ prompt_context(){
 }
 
 COMFYLINE_NO_START=1      # variable to have no segment seperator at the start and end of the powerline from the edge of terminal
-COMFYLINE_RETVAL_NUMBER=1
+COMFYLINE_RETVAL_NUMBER=2
 COMFYLINE_START_NEXT_LINE=1
 COMFYLINE_NEXT_LINE_CHAR='\u000A\ue0b0'
 COMFYLINE_NO_GAP_LINE=1
@@ -161,7 +161,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # kitty ssh fix
 alias ssh="kitten ssh"
-
+export ZLE_RPROMPT_INDENT=0
 
 clear
 fastfetch
