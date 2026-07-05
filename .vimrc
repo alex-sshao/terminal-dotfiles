@@ -43,9 +43,9 @@ let g:ale_completion_delay = 100
 let g:ale_completion_autoimport = 1
 
 let g:ale_linters = {
-\ 'c': ['clangd'],
-\ 'c++': ['clangd'],
-\ }
+      \ 'c': ['clangd'],
+      \ 'c++': ['clangd'],
+      \ }
 
 let g:ale_c_clang_options = '-std=c11 -Wall -Wextra -Wpedantic -O0 -g'
 let g:ale_cpp_cc_options = '-std=c++0x -Wall -Wextra -Weffc++ -Wsign-conversion'
@@ -64,7 +64,7 @@ let g:ale_lint_on_enter = 0
 
 " fzf
 command! -bang -nargs=* PRg
-  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
+      \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
 nnoremap <C-n> :Files<CR>
 nnoremap <C-f> :Rg<CR>
 
@@ -156,9 +156,9 @@ set shell=/bin/zsh
 set scrolloff=3
 
 set updatetime=100
-set tabstop=2
+set tabstop=4
 
-set shiftwidth=2
+set shiftwidth=4
 set breakindent
 set formatoptions=l
 set lbr

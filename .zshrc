@@ -14,25 +14,47 @@ prompt_context(){
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
   fi
 }
-RETVAL_b="#8caaee" # Blue   # background
-RETVAL_f="#303446"    # foreground
+
+COMFYLINE_NO_START=1      # variable to have no segment seperator at the start and end of the powerline from the edge of terminal
+COMFYLINE_RETVAL_NUMBER=1
+COMFYLINE_START_NEXT_LINE=1
+COMFYLINE_NEXT_LINE_CHAR='\u000A\ue0b0'
+COMFYLINE_NO_GAP_LINE=1
+COMFYLINE_NEXT_LINE_CHAR_COLOR="#6c7086" # Overlay 0
+COMFYLINE_TIME_FORMAT="%H:%M"
+
+
+HOST_RANK=1    # hostname
+USER_RANK=2
+DIR_RANK=3
+GIT_RANK=4
+VENV_RANK=5
+RETVAL_RANK=-1  # return value of previous command if error then displays it in red
+#BAT_RANK=-1
+DATE_RANK=-2
+TIME_RANK=-3
+
+RETVAL_b="#fab387" # Peach  # background
+
 HOST_b="#85c1dc" # Sapphire
+USER_b="#8caaee" # Blue
+GIT_b="#ea999c" # maroon
+GIT_CLEAN_b="#a6e3a1" # Green
+DIR_b="#b4befe" # Lavender
+VENV_b="#b4befe" # Lavender
+BAT_b="#74c7ec" #Sapphire
+DATE_b="#89dceb:" #Sky
+TIME_b="#8caaee" # Blue 
+
+RETVAL_f="#303446"    # foreground
 HOST_f="#303446" 
-USER_b="#99d1db" # Sky
 USER_f="#303446"
-GIT_b="#81c8be" # teal
 GIT_f="#303446"
-GIT_CLEAN_b="#b3f58c" 
 GIT_CLEAN_f="#303446"
-DIR_b="#8caaee"
 DIR_f="#303446"
-VENV_b="#a8ddf9"
 VENV_f="#303446"
-BAT_b="#8a8bd8"
 BAT_f="#303446"
-DATE_b="#b3b5fb"
 DATE_f="#303446"
-TIME_b="#f8bbe5"
 TIME_f="#303446"
 
 # Set list of themes to pick from when loading at random
