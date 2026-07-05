@@ -23,7 +23,7 @@ cfdo(){
 	checkf $1
 	if [[ $? == 1 ]]; then
 		eval $2
-		if [ ! $3 == '' ]; then
+		if [[ ! $3 == '' ]]; then
 			echo $3
 		fi
 	fi
@@ -31,7 +31,7 @@ cfdo(){
 }
 
 linkf(){
-	checkf $1
+	checkf $2
 	if [[ $? == 1 ]]; then
 		echo "Linking ${bd}$1 to $2"
 		ln -sf ${bd}$1 $2
