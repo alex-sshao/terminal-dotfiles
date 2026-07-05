@@ -120,6 +120,7 @@ inoremap <c-z> <nop>
 
 " No search highlight 
 " set nohlsearch
+nnoremap <cr><cr> :noh
 
 " Visuals
 let g:gitgutter_set_sign_backgrounds = 0
