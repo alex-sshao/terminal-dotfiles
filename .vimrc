@@ -1,6 +1,6 @@
 filetype plugin indent on 
 
-set ttyfast
+
 set ttimeout
 set ttimeoutlen=100
 
@@ -20,6 +20,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+
+Plug 'maxbrunsfeld/vim-yankstack'
 
 Plug 'catppuccin/vim', { 'as': 'catppuccin', 'branch': 'main' }
 call plug#end()
@@ -67,6 +69,12 @@ command! -bang -nargs=* PRg
       \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
 nnoremap <C-n> :Files<CR>
 nnoremap <C-f> :Rg<CR>
+
+" Yank stack
+nnoremap <C-p> <Plug>yankstack_substitute_older_paste
+nnoremap <C-P> <Plug>yankstack_substitute_newer_paste
+
+
 
 " window management
 nnoremap <C-w>v :vsplit<CR>
