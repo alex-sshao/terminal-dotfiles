@@ -176,3 +176,8 @@ command! S execute 'cd ' . resolve('/proc/'.job_info(term_getjob(bufnr('%')))['p
 "set cursorline
 set cursorlineopt=number
 set nu
+
+cabbrev e Explore
+cabbrev E Explore
+cabbrev term vert term
+
