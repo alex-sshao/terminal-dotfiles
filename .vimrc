@@ -1,6 +1,5 @@
 filetype plugin indent on 
 
-
 set ttimeout
 set ttimeoutlen=100
 
@@ -22,6 +21,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'scrooloose/nerdtree'
 
 Plug 'catppuccin/vim', { 'as': 'catppuccin', 'branch': 'main' }
 call plug#end()
@@ -74,7 +74,8 @@ nnoremap <C-f> :Rg<CR>
 nnoremap <C-p> <Plug>yankstack_substitute_older_paste
 nnoremap <C-P> <Plug>yankstack_substitute_newer_paste
 
-
+" NERDTree
+let NERDTreeMinimalUI=1
 
 " window management
 nnoremap <C-w>v :vsplit<CR>
@@ -82,24 +83,21 @@ nnoremap <C-w>t :vert term<CR>
 nnoremap <C-w><C-t> :vert term<CR>
 nnoremap <C-w>T :term<CR>
 nnoremap <C-w>s :split<CR>
-nnoremap <C-w>c :close<CR>
 nnoremap <C-w>x :x<CR>
 nnoremap <C-w><C-w> :w<CR>
+nnoremap <C-x> :close<CR>
 
 nnoremap <C-w>Q :q!<CR>
 nnoremap <C-w>q :q!<CR>
 nnoremap <C-w><C-q> <Nop>
 nnoremap <C-w><C-Q> <Nop>
 
-nnoremap <C-w>e :E<CR>
-nnoremap <C-w><C-e> :E<CR>
-
-
 nnoremap <C-a>h :tabprevious<CR>
 nnoremap <C-a>l :tabnext<CR>
 nnoremap <C-a><C-h> :tabprevious<CR>
 nnoremap <C-a><C-l> :tabnext<CR>
 nnoremap <C-a>n :tabnew<CR>
+nnoremap <C-t> <C-w>:tabnew<CR>
 nnoremap <C-a>x :x<CR>
 nnoremap <a-1> 1gt
 nnoremap <a-2> 2gt
@@ -111,6 +109,8 @@ nnoremap <a-7> 7gt
 
 nnoremap <C-X> <C-a><C-a>
 nnoremap <A-w> <A-BS>
+
+nnoremap <C-e> :NERDTree<CR>
 
 " terminal management
 tnoremap <C-w>q <C-w>:q!<CR>
@@ -184,8 +184,3 @@ command! S execute 'cd ' . resolve('/proc/'.job_info(term_getjob(bufnr('%')))['p
 "set cursorline
 set cursorlineopt=number
 set nu
-
-cabbrev e Explore
-cabbrev E Explore
-cabbrev term vert term
-
