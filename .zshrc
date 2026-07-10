@@ -155,6 +155,7 @@ source $ZSH/oh-my-zsh.sh
 #powerline-daemon -q
 #. /usr/share/powerline/bindings/zsh/powerline.zsh
 
+alias rm="rm -I"
 
 # Syntax Highlight
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -162,6 +163,9 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # kitty ssh fix
 alias ssh="kitten ssh"
 export ZLE_RPROMPT_INDENT=0
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 clear
 fastfetch

@@ -22,6 +22,7 @@ Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'scrooloose/nerdtree'
+Plug 'neoclide/coc.nvim'
 
 Plug 'catppuccin/vim', { 'as': 'catppuccin', 'branch': 'main' }
 call plug#end()
@@ -79,8 +80,8 @@ let NERDTreeMinimalUI=1
 
 " window management
 nnoremap <C-w>v :vsplit<CR>
-nnoremap <C-w>t :vert term<CR>
-nnoremap <C-w><C-t> :vert term<CR>
+nnoremap <C-w>t :vert term<CR><C-w><C-x>
+nnoremap <C-w><C-t> :vert term<CR><C-w><C-x>
 nnoremap <C-w>T :term<CR>
 nnoremap <C-w>s :split<CR>
 nnoremap <C-w>x :x<CR>
