@@ -22,7 +22,6 @@ Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'scrooloose/nerdtree'
-Plug 'neoclide/coc.nvim'
 
 Plug 'catppuccin/vim', { 'as': 'catppuccin', 'branch': 'main' }
 call plug#end()
@@ -35,6 +34,9 @@ set smartcase
 " code completion
 set completeopt=menuone,noinsert,noselect
 set omnifunc=ale#completion#OmniFunc
+set complete=.,w,b,u,t,k
+
+
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -48,7 +50,14 @@ let g:ale_completion_autoimport = 1
 let g:ale_linters = {
       \ 'c': ['clangd'],
       \ 'c++': ['clangd'],
+      \ 'cmake': ['cmake-lint'],
       \ }
+ let g:ale_fixers = {
+      \ 'c': ['clang-format'],
+      \ 'c++': ['clang-format'],
+      \ 'cmake': ['cmake-format'],
+	  \ '': ['remove_trailing_lines', 'replace_emdash', 'remove_traling_lines'],
+  \}
 
 let g:ale_c_clang_options = '-std=c11 -Wall -Wextra -Wpedantic -O0 -g'
 let g:ale_cpp_cc_options = '-std=c++0x -Wall -Wextra -Weffc++ -Wsign-conversion'
@@ -92,6 +101,7 @@ nnoremap <C-w>Q :q!<CR>
 nnoremap <C-w>q :q!<CR>
 nnoremap <C-w><C-q> <Nop>
 nnoremap <C-w><C-Q> <Nop>
+nnoremap <C-w><C-h> <C-w>h
 
 nnoremap <C-a>h :tabprevious<CR>
 nnoremap <C-a>l :tabnext<CR>
