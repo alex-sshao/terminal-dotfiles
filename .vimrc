@@ -18,7 +18,7 @@ Plug 'enricobacis/vim-airline-clock'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+"Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'scrooloose/nerdtree'
@@ -31,26 +31,22 @@ set hlsearch
 set ignorecase
 set smartcase
 
-" code completion
-set completeopt=menuone,noinsert,noselect
+"code completion
+"set completeopt=menuone,noinsert,noselect,fuzzy
 set omnifunc=ale#completion#OmniFunc
-set complete=.,w,b,u,t,k
+let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
+let g:ale_completion_delay = 2
 
+inoremap <C-m> <C-x><C-o>
 
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " ale config (Syntax checking)
-let g:ale_completion_enabled = 1
-let g:ale_completion_delay = 100
-let g:ale_completion_autoimport = 1
-
 let g:ale_linters = {
       \ 'c': ['clangd'],
       \ 'c++': ['clangd'],
-      \ 'cmake': ['cmake-lint'],
+      \ 'cmake': ['cmakelint'],
       \ }
  let g:ale_fixers = {
       \ 'c': ['clang-format'],
@@ -86,6 +82,8 @@ nnoremap <C-P> <Plug>yankstack_substitute_newer_paste
 
 " NERDTree
 let NERDTreeMinimalUI=1
+let NERDTreeShowHidden=1
+
 
 " window management
 nnoremap <C-w>v :vsplit<CR>
