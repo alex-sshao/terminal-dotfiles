@@ -156,7 +156,9 @@ source $ZSH/oh-my-zsh.sh
 #. /usr/share/powerline/bindings/zsh/powerline.zsh
 
 alias rm="rm -I"
-alias vi="nvim"
+if type "$nvim" > /dev/null; then
+	alias vi="nvim"
+fi
 
 # Syntax Highlight
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
