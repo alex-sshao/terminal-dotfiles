@@ -23,6 +23,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'scrooloose/nerdtree'
 
+Plug 'SirVer/ultisnips'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'
+Plug 'thomasfaingnaert/vim-lsp-snippets'
+Plug 'honza/vim-snippets'
+
 Plug 'catppuccin/vim', { 'as': 'catppuccin', 'branch': 'main' }
 call plug#end()
 
@@ -32,13 +40,28 @@ set ignorecase
 set smartcase
 
 "code completion
-"set completeopt=menuone,noinsert,noselect,fuzzy
-set omnifunc=ale#completion#OmniFunc
-let g:ale_completion_enabled = 1
-let g:ale_completion_autoimport = 1
-let g:ale_completion_delay = 2
+let g:ale_completion_enabled = 0
 
-inoremap <C-m> <C-x><C-o>
+" vim-lsp register clangd
+if executable('clangd')
+  augroup lsp_install
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd', '--background-index']},
+        \ 'allowlist': ['c', 'cpp'],
+        \ })
+    autocmd FileType c,cpp,objc,objcpp setlocal omnifunc=lsp#complete
+  augroup END
+endif
+
+" asyncomplete enable popup, UltiSnips for snippet expansion
+let g:asyncomplete_auto_popup = 1
+set completeopt=menuone,noinsert,noselect
+
+let g:UltiSnipsExpandTrigger = '<Plug>(noexpand)'
+let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
@@ -51,7 +74,7 @@ let g:ale_linters = {
  let g:ale_fixers = {
       \ 'c': ['clang-format'],
       \ 'c++': ['clang-format'],
-      \ 'cmake': ['cmake-format'],
+      \ 'cmake': ['cmakeformat'],
 	  \ '': ['remove_trailing_lines', 'replace_emdash', 'remove_traling_lines'],
   \}
 
@@ -64,11 +87,9 @@ nmap <silent> ]e <Plug>(ale_next_wrap)
 set statusline+=%#warningmsg#
 set statusline+=%*
 
-
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
-
 
 " fzf
 command! -bang -nargs=* PRg
@@ -83,7 +104,6 @@ nnoremap <C-P> <Plug>yankstack_substitute_newer_paste
 " NERDTree
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
-
 
 " window management
 nnoremap <C-w>v :vsplit<CR>
@@ -115,6 +135,20 @@ nnoremap <a-4> 4gt
 nnoremap <a-5> 5gt
 nnoremap <a-6> 6gt
 nnoremap <a-7> 7gt
+nnoremap <a-8> 8gt
+nnoremap <a-9> 9gt
+nnoremap <a-0> 10gt
+
+tnoremap <a-1> 1gt
+tnoremap <a-2> 2gt
+tnoremap <a-3> 3gt
+tnoremap <a-4> 4gt
+tnoremap <a-5> 5gt
+tnoremap <a-6> 6gt
+tnoremap <a-7> 7gt
+tnoremap <a-8> 8gt
+tnoremap <a-9> 9gt
+tnoremap <a-0> 10gt
 
 nnoremap <C-X> <C-a><C-a>
 nnoremap <A-w> <A-BS>
@@ -143,7 +177,7 @@ inoremap <c-z> <nop>
 
 " No search highlight 
 " set nohlsearch
-nnoremap <cr><cr> :noh
+nnoremap <cr><cr> :noh<cr>
 
 " Visuals
 let g:gitgutter_set_sign_backgrounds = 0
