@@ -83,6 +83,7 @@ let g:ale_cpp_cc_options = '-std=c++0x -Wall -Wextra -Weffc++ -Wsign-conversion'
 
 nmap <silent> [e <Plug>(ale_previous_wrap)
 nmap <silent> ]e <Plug>(ale_next_wrap)
+nmap <silent> <F2> <Plug>(ale_fix)
 
 set statusline+=%#warningmsg#
 set statusline+=%*
