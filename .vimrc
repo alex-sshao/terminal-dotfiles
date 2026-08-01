@@ -44,16 +44,18 @@ let g:ale_completion_enabled = 0
 
 " vim-lsp register clangd
 if executable('clangd')
-  augroup lsp_install
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'clangd',
-        \ 'cmd': {server_info->['clangd', '--background-index']},
-        \ 'allowlist': ['c', 'cpp'],
-        \ })
-    autocmd FileType c,cpp,objc,objcpp setlocal omnifunc=lsp#complete
-  augroup END
+	augroup lsp_install
+		autocmd!
+		autocmd User lsp_setup call lsp#register_server({
+			\ 'name': 'clangd',
+			\ 'cmd': {server_info->['clangd', '--background-index']},
+			\ 'allowlist': ['c', 'cpp'],
+			\ })
+		autocmd FileType c,cpp,objc,objcpp setlocal omnifunc=lsp#complete
+	augroup END
 endif
+let g:lsp_document_code_action_signs_enabled = 0
+let g:lsp_diagnostics_enabled = 0
 
 " asyncomplete enable popup, UltiSnips for snippet expansion
 let g:asyncomplete_auto_popup = 1
@@ -67,16 +69,16 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " ale config (Syntax checking)
 let g:ale_linters = {
-      \ 'c': ['clangd'],
-      \ 'cpp': ['clangd'],
-      \ 'cmake': ['cmakelint'],
-      \ }
+	\ 'c': ['clangd'],
+	\ 'cpp': ['clangd'],
+	\ 'cmake': ['cmakelint'],
+	\ }
  let g:ale_fixers = {
-      \ 'c': ['clang-format'],
-      \ 'cpp': ['clang-format'],
-      \ 'cmake': ['cmakeformat'],
-	  \ '': ['remove_trailing_lines', 'replace_emdash', 'remove_traling_lines'],
-  \}
+	\ 'c': ['clang-format'],
+	\ 'cpp': ['clang-format'],
+	\ 'cmake': ['cmakeformat'],
+	\ '': ['remove_trailing_lines', 'replace_emdash', 'remove_traling_lines'],
+\}
 let g:ale_c_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100, UseTab: Always, TabWidth: 4}'
 let g:ale_cpp_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100, UseTab: Always, TabWidth: 4}'
 
@@ -86,6 +88,7 @@ let g:ale_cpp_cc_options = '-std=c++0x -Wall -Wextra -Weffc++ -Wsign-conversion'
 nmap <silent> [e <Plug>(ale_previous_wrap)
 nmap <silent> ]e <Plug>(ale_next_wrap)
 nmap <silent> <F2> <Plug>(ale_fix)
+nmap <silent> <F3> <Plug>(ale_code_action)
 
 set statusline+=%#warningmsg#
 set statusline+=%*
@@ -94,9 +97,43 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 
+" Modifying ALE source to only show virtualtext for errors
+let g:ale_virtualtext_cursor = 'disabled'
+
+augroup ALEVirtualTextErrorsOnly
+	autocmd!
+	autocmd CursorHold,CursorHoldI * call s:ShowErrorVirtualTextOnly()
+augroup END
+
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_set_highlights = 0
+augroup ALEColors
+	autocmd!
+	autocmd ColorScheme * highlight! link ALEErrorSign NONE
+	autocmd ColorScheme * highlight! ALEErrorSign ctermfg=red guifg=#ff0000
+	autocmd ColorScheme * highlight! link ALEWarningSign NONE
+	autocmd ColorScheme * highlight! ALEWarningSign ctermfg=yellow guifg=#ffff00
+augroup END
+
+function! s:ShowErrorVirtualTextOnly() abort
+	let l:buffer = bufnr('')
+	
+	" Clear whatever virtualtext is currently shown before deciding what to show
+	call ale#virtualtext#Clear(l:buffer)
+	
+	let [l:info, l:item] = ale#util#FindItemAtCursor(l:buffer)
+	
+	" Only display if the item under the cursor is an Error ('E'), not a Warning ('W')
+	if !empty(l:item) && get(l:item, 'type', 'E') is# 'E'
+		call ale#virtualtext#ShowMessage(l:buffer, l:item)
+	endif
+endfunction
+
 " fzf
 command! -bang -nargs=* PRg
-      \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
+	\ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
 nnoremap <C-n> :Files<CR>
 nnoremap <C-f> :Rg<CR>
 
