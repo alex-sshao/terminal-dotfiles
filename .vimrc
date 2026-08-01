@@ -68,16 +68,17 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 " ale config (Syntax checking)
 let g:ale_linters = {
       \ 'c': ['clangd'],
-      \ 'c++': ['clangd'],
+      \ 'cpp': ['clangd'],
       \ 'cmake': ['cmakelint'],
       \ }
  let g:ale_fixers = {
       \ 'c': ['clang-format'],
-      \ 'c++': ['clang-format'],
+      \ 'cpp': ['clang-format'],
       \ 'cmake': ['cmakeformat'],
 	  \ '': ['remove_trailing_lines', 'replace_emdash', 'remove_traling_lines'],
   \}
 let g:ale_c_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100, UseTab: Always, TabWidth: 4}'
+let g:ale_cpp_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100, UseTab: Always, TabWidth: 4}'
 
 let g:ale_c_clang_options = '-std=c11 -Wall -Wextra -Wpedantic -O0 -g'
 let g:ale_cpp_cc_options = '-std=c++0x -Wall -Wextra -Weffc++ -Wsign-conversion'
