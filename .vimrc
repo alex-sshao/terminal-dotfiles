@@ -6,8 +6,8 @@ set ttimeoutlen=100
 call plug#begin()
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-fugitive'
-Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive' 
+Plug 'sheerun/vim-polyglot' 
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
@@ -79,8 +79,25 @@ let g:ale_linters = {
 	\ 'cmake': ['cmakeformat'],
 	\ '': ['remove_trailing_lines', 'replace_emdash', 'remove_traling_lines'],
 \}
-let g:ale_c_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100, UseTab: Always, TabWidth: 4}'
-let g:ale_cpp_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100, UseTab: Always, TabWidth: 4}'
+let g:ale_c_clangformat_style_option = '{	 
+	\ BasedOnStyle: LLVM, 
+	\ IndentWidth: 4, 
+	\ ColumnLimit: 80, 
+	\ UseTab: Always, 
+	\ TabWidth: 4, 
+	\ AlignConsecutiveAssignments: AcrossEmptyLinesAndComments, 
+	\ AlignConsecutiveDeclarations: true,
+	\ AllowShortBlocksOnASingleLine: Always, 
+	\ AllowShortIfStatementsOnASingleLine: Always,
+	\ AllowShortLoopsOnASingleLine: True,
+	\ NamespaceIndentation: All,
+	\ SeparateDefinitionBlocks: Always,
+	\ BinPackArguments: false, 
+	\ BinPackParameters: false,
+	\ AllowAllArgumentsOnNextLine: false, 
+	\ AllowAllParametersOfDeclarationOnNextLine: false,
+	\ SpacesInParentheses: true
+	\ }'
 
 let g:ale_c_clang_options = '-std=c11 -Wall -Wextra -Wpedantic -O0 -g'
 let g:ale_cpp_cc_options = '-std=c++0x -Wall -Wextra -Weffc++ -Wsign-conversion'
