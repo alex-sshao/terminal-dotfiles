@@ -184,7 +184,7 @@ nnoremap <C-a><C-h> :tabprevious<CR>
 nnoremap <C-a><C-l> :tabnext<CR>
 nnoremap <C-a>n :tabnew<CR>
 nnoremap <C-t> <C-w>:tabnew<CR>
-nnoremap <C-a>x :x<CR>
+nnoremap <C-a>x :tabclose<CR>
 nnoremap <a-1> 1gt
 nnoremap <a-2> 2gt
 nnoremap <a-3> 3gt
@@ -196,16 +196,21 @@ nnoremap <a-8> 8gt
 nnoremap <a-9> 9gt
 nnoremap <a-0> 10gt
 
-tnoremap <a-1> 1gt
-tnoremap <a-2> 2gt
-tnoremap <a-3> 3gt
-tnoremap <a-4> 4gt
-tnoremap <a-5> 5gt
-tnoremap <a-6> 6gt
-tnoremap <a-7> 7gt
-tnoremap <a-8> 8gt
-tnoremap <a-9> 9gt
-tnoremap <a-0> 10gt
+tnoremap <a-1> <C-\><C-n>1gt
+tnoremap <a-2> <C-\><C-n>2gt
+tnoremap <a-3> <C-\><C-n>3gt
+tnoremap <a-4> <C-\><C-n>4gt
+tnoremap <a-5> <C-\><C-n>5gt
+tnoremap <a-6> <C-\><C-n>6gt
+tnoremap <a-7> <C-\><C-n>7gt
+tnoremap <a-8> <C-\><C-n>8gt
+tnoremap <a-9> <C-\><C-n>9gt
+tnoremap <a-0> <C-\><C-n>10gt
+augroup TerminalJobMode
+  autocmd!
+  autocmd WinEnter,TabEnter,BufWinEnter * if &buftype ==# 'terminal' | silent! normal i | endif
+augroup END
+tnoremap <c-n> <C-\><C-n>
 
 nnoremap <C-X> <C-a><C-a>
 nnoremap <A-w> <A-BS>
