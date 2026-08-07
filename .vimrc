@@ -178,6 +178,8 @@ nnoremap <C-w><C-q> <Nop>
 nnoremap <C-w><C-Q> <Nop>
 nnoremap <C-w><C-h> <C-w>h
 
+" tab management
+nnoremap <C-w>v :vsplit<CR>
 nnoremap <C-a>h :tabprevious<CR>
 nnoremap <C-a>l :tabnext<CR>
 nnoremap <C-a><C-h> :tabprevious<CR>
@@ -196,6 +198,7 @@ nnoremap <a-8> 8gt
 nnoremap <a-9> 9gt
 nnoremap <a-0> 10gt
 
+" terminal management
 tnoremap <a-1> <C-\><C-n>1gt
 tnoremap <a-2> <C-\><C-n>2gt
 tnoremap <a-3> <C-\><C-n>3gt
@@ -217,7 +220,6 @@ nnoremap <A-w> <A-BS>
 
 nnoremap <C-e> :NERDTree<CR>
 
-" terminal management
 tnoremap <C-w>q <C-w>:q!<CR>
 tnoremap <C-w><C-n> <C-w>N<CR>
 tnoremap <C-w><C-N> <C-w>N<CR>
@@ -260,6 +262,8 @@ setglobal fileencoding=utf-8
 set fillchars=vert:\┃
 
 " General
+nnoremap <F5> :checktime<CR>
+set autoread
 set nobackup
 set noswapfile
 set relativenumber
