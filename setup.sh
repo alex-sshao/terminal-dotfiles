@@ -46,11 +46,13 @@ linkf(){
 
 cfdo ~/.oh-my-zsh 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 
+
 cfdo ~/.vim 'cp -r .vim ~' 'Replaced ~/.vim file'
 cfdo ~/.oh-my-zsh/custom/themes/comfyline.zsh-theme 'cp ${bd}comfyline.zsh-theme ~/.oh-my-zsh/custom/themes' 'Added comfyline theme to oh-my-zsh.'
 
 linkf .vimrc ~/.vimrc
 linkf .zshrc ~/.zshrc
+linkf ./fastfetch ~/.config/fastfetch
 
 echo "Powerline Fonts:"
 cfdo ~/.local/share/fonts 'git clone https://github.com/powerline/fonts.git --depth=1 && ./fonts/install.sh && rm -rf ./fonts'
