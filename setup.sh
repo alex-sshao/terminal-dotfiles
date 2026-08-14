@@ -46,7 +46,6 @@ linkf(){
 
 cfdo ~/.oh-my-zsh 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 
-
 cfdo ~/.vim 'cp -r .vim ~' 'Replaced ~/.vim file'
 cfdo ~/.oh-my-zsh/custom/themes/comfyline.zsh-theme 'cp ${bd}comfyline.zsh-theme ~/.oh-my-zsh/custom/themes' 'Added comfyline theme to oh-my-zsh.'
 
