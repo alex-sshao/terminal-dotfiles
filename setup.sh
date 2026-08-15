@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# Home directory absolute path var
 bd="$( cd "$( dirname "$0" )" && pwd )/"
 
-
+# checkf: helper function to see if a file/dir exists
+# arg 1: path
 checkf(){
 	if [[ -e $1 ]]; then 
 		echo "$1 found, do you want to replace it?"
@@ -19,6 +21,11 @@ checkf(){
 	fi
 	return 1
 }
+
+# cfdo: Checks if a file is there, and if not, runs command
+# arg 1: Directory to check for content
+# arg 2: Command to run
+# arg 3: (optional) What to print afterwards
 cfdo(){
 	checkf $1
 	if [[ $? == 1 ]]; then
@@ -30,6 +37,11 @@ cfdo(){
 	echo ""
 }
 
+# linkf: checks if there is a file
+# 	if yes: asks to replace (Y/N)
+# 	if no : links as new dir automatically
+# arg 1: path in this repo
+# arg 2: path of place in filesystem
 linkf(){
 	checkf $2
 	if [[ $? == 1 ]]; then
