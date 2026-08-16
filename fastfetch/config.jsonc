@@ -121,21 +121,6 @@
             "keyColor": "green"
         },
         {
-            "type": "sound",
-            "key": " SND",
-            "keyColor": "cyan"
-        },
-        {
-            "type": "player",
-            "key": "│ ├{icon}",
-            "keyColor": "cyan"
-        },
-        {
-            "type": "media",
-            "key": "│ └󰝚",
-            "keyColor": "cyan"
-        },
-        {
             "type": "custom",
             "format": "└{$1}{$1}┘",
             "outputColor": "90"
