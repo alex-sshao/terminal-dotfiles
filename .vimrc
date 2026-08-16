@@ -69,8 +69,8 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " ale config (Syntax checking)
 let g:ale_linters = {
-	\ 'c': ['clangd'],
-	\ 'cpp': ['clangd'],
+	\ 'c': ['clang'],
+	\ 'cpp': ['clang'],
 	\ 'cmake': ['cmakelint'],
 	\ }
  let g:ale_fixers = {
@@ -111,8 +111,8 @@ set statusline+=%#warningmsg#
 set statusline+=%*
 
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_enter = 1
 
 " Modifying ALE source to only show virtualtext for errors
 let g:ale_virtualtext_cursor = 'disabled'
