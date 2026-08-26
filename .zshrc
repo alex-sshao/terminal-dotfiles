@@ -163,7 +163,9 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # kitty ssh fix
 alias ssh="kitten ssh"
+
 export ZLE_RPROMPT_INDENT=0
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
