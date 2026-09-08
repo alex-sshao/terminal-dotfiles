@@ -164,9 +164,20 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # kitty ssh fix
 alias ssh="kitten ssh"
 export ZLE_RPROMPT_INDENT=0
+export EDITOR="vim"
+
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+
+function y() {
+	local tmp cwd; tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
+	command rm -f -- "$tmp"
+}
+alias yazi="y"
 
 clear
 fastfetch
