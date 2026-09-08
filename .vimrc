@@ -41,6 +41,7 @@ set smartcase
 
 "code completion
 let g:ale_completion_enabled = 0
+let g:ale_disable_lsp = 1
 
 " vim-lsp register clangd
 if executable('clangd')
@@ -105,7 +106,7 @@ let g:ale_cpp_cc_options = '-std=c++0x -Wall -Wextra -Weffc++ -Wsign-conversion'
 nmap <silent> [e <Plug>(ale_previous_wrap)
 nmap <silent> ]e <Plug>(ale_next_wrap)
 nmap <silent> <F2> <Plug>(ale_fix)
-nmap <silent> <F3> <Plug>(ale_code_action)
+nmap <silent> <F3> <Plug>(ale_reset)
 
 set statusline+=%#warningmsg#
 set statusline+=%*
@@ -284,6 +285,7 @@ set nomodeline
 vnoremap < <gv
 vnoremap > >gv
 nnoremap Q @@
+inoremap <C-c> <esc>
 
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
