@@ -165,12 +165,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 alias ssh="kitten ssh"
 
 export ZLE_RPROMPT_INDENT=0
-<<<<<<< HEAD
 export EDITOR="vim"
-
-=======
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
->>>>>>> 6eade0cf6cb47f221fa3b104519d1ef1dabca335
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
