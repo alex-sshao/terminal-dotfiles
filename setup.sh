@@ -63,7 +63,9 @@ cfdo ~/.oh-my-zsh/custom/themes/comfyline.zsh-theme 'cp ${bd}comfyline.zsh-theme
 
 linkf .vimrc ~/.vimrc
 linkf .zshrc ~/.zshrc
-linkf ./fastfetch ~/.config/fastfetch
+for f in .config/*;do
+	linkf "$f" ~/"$f"
+done;
 
 echo "Powerline Fonts:"
 cfdo ~/.local/share/fonts 'git clone https://github.com/powerline/fonts.git --depth=1 && ./fonts/install.sh && rm -rf ./fonts'
